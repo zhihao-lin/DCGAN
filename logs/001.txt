@@ -1,0 +1,56 @@
+       
+ID: 001 
+ Generator: g_01 
+ Discriminator: d_01 
+ Learning rate: 0.001 
+ Epoch number: 500 
+ Batch size: 64 
+ =======================
+
+ Epoch  0 Step 100 | G loss : 0.43173471093177795 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  0.0
+ Epoch  0 Step 200 | G loss : 0.43173471093177795 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  0.0
+ Epoch  0 Step 300 | G loss : 0.43173471093177795 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  0.0
+ Epoch  0 Step 400 | G loss : 0.42809104919433594 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  7.421487868697341e-10
+ Epoch  0 Step 500 | G loss : 0.41246306896209717 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  6.406718284779345e-07
+ Epoch  0 Step 600 | G loss : 0.3739929795265198 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  6.415778557311569e-07
+ Epoch  1 Step 100 | G loss : 0.18329334259033203 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  8.858777391651529e-07
+ Epoch  1 Step 200 | G loss : 0.16802212595939636 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  3.535575956448156e-07
+ Epoch  1 Step 300 | G loss : 0.17877262830734253 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  1.6880314035461197e-07
+ Epoch  1 Step 400 | G loss : 0.1874569207429886 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  9.713434678815247e-08
+ Epoch  1 Step 500 | G loss : 0.1931583285331726 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  6.722999046360201e-08
+ Epoch  1 Step 600 | G loss : 0.19769006967544556 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  5.016052995188147e-08
+ Epoch  2 Step 100 | G loss : 0.20421212911605835 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  3.326571373918341e-08
+ Epoch  2 Step 200 | G loss : 0.2062419354915619 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  2.89437878109311e-08
+ Epoch  2 Step 300 | G loss : 0.20830217003822327 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  2.548042488115243e-08
+ Epoch  2 Step 400 | G loss : 0.2109653651714325 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  2.147864108792419e-08
+ Epoch  2 Step 500 | G loss : 0.2127683460712433 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  1.9135779183443447e-08
+ Epoch  2 Step 600 | G loss : 0.21436567604541779 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  1.7214926373299022e-08
+ Epoch  3 Step 100 | G loss : 0.21777066588401794 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  1.3897085260339281e-08
+ Epoch  3 Step 200 | G loss : 0.21947282552719116 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  1.2383685188410709e-08
+ Epoch  3 Step 300 | G loss : 0.22145356237888336 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  1.0957595719673918e-08
+ Epoch  3 Step 400 | G loss : 0.223270446062088 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  9.822546331861304e-09
+ Epoch  3 Step 500 | G loss : 0.22521242499351501 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  8.600183676321649e-09
+ Epoch  3 Step 600 | G loss : 0.22714826464653015 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  7.566997695107602e-09
+ Epoch  4 Step 100 | G loss : 0.22963950037956238 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  6.475603164801669e-09
+ Epoch  4 Step 200 | G loss : 0.23117667436599731 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  5.77711123384006e-09
+ Epoch  4 Step 300 | G loss : 0.23246489465236664 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  5.573384420642924e-09
+ Epoch  4 Step 400 | G loss : 0.23406967520713806 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  4.656613761255812e-09
+ Epoch  4 Step 500 | G loss : 0.23599249124526978 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  4.467438863287043e-09
+ Epoch  4 Step 600 | G loss : 0.23692920804023743 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  3.725290742551124e-09
+ Epoch  5 Step 100 | G loss : 0.2396126389503479 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  3.5943235054958222e-09
+ Epoch  5 Step 200 | G loss : 0.24069854617118835 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  2.7939679458910405e-09
+ Epoch  5 Step 300 | G loss : 0.24220815300941467 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  2.7939679458910405e-09
+ Epoch  5 Step 400 | G loss : 0.24369588494300842 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  2.7794160306626736e-09
+ Epoch  5 Step 500 | G loss : 0.24487778544425964 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  2.735760284977573e-09
+ Epoch  5 Step 600 | G loss : 0.24598325788974762 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  1.862645371275562e-09
+ Epoch  6 Step 100 | G loss : 0.2482224553823471 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  1.862645371275562e-09
+ Epoch  6 Step 200 | G loss : 0.2495097815990448 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  1.862645371275562e-09
+ Epoch  6 Step 300 | G loss : 0.2507617175579071 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  1.862645371275562e-09
+ Epoch  6 Step 400 | G loss : 0.25184011459350586 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  1.862645371275562e-09
+ Epoch  6 Step 500 | G loss : 0.25291234254837036 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  1.8189896255904614e-09
+ Epoch  6 Step 600 | G loss : 0.2540489435195923 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  9.313225746154785e-10
+ Epoch  7 Step 100 | G loss : 0.2557992935180664 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  9.313225746154785e-10
+ Epoch  7 Step 200 | G loss : 0.25703752040863037 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  9.313225746154785e-10
+ Epoch  7 Step 300 | G loss : 0.25821298360824585 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  9.313225746154785e-10
+ Epoch  7 Step 400 | G loss : 0.25922924280166626 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  9.313225746154785e-10
+ Epoch  7 Step 500 | G loss : 0.26036110520362854 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  9.313225746154785e-10
