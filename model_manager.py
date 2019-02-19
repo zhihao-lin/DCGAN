@@ -84,7 +84,8 @@ class Manaeger():
 
                 if (batch_id + 1) % self.check_batch_num == 0:
                     info = get_string('Epoch ', epoch, '| G loss :', loss_G.item()/self.batch_size)
-                    info = get_string(info, '| D loss (valid) : ', loss_valid/self.batch_size, '| D loss (fake) : ', loss_fake/self.batch_size)
+                    info = get_string(info, '| D loss (valid) : ', loss_valid/self.batch_size,
+                                            '| D loss (fake) : ', loss_fake/self.batch_size)
                     self.record(info + '\n')
                     self.save_images(img_gen.detach())
                     
@@ -106,5 +107,6 @@ class Manaeger():
             cv.imwrite(path, img)
 
     def get_input_vector(self):
-        vector = torch.normal(mean= torch.zeros(self.batch_size, self.latent_dim), std= torch.ones(self.batch_size, self.latent_dim)).to(self.device)
+        vector = torch.normal(mean= torch.zeros(self.batch_size, self.latent_dim), 
+                              std= torch.ones(self.batch_size, self.latent_dim)).to(self.device)
         return vector
