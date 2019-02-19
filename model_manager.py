@@ -85,11 +85,12 @@ class Manaeger():
                 self.optimizer_D.step()
 
                 if (batch_id + 1) % self.check_batch_num == 0:
-                    info = get_string('Epoch ', epoch, '| G loss :', loss_G.item()/self.batch_size)
-                    info = get_string(info, '| D loss (valid) : ', loss_valid/self.batch_size,
-                                            '| D loss (fake) : ', loss_fake/self.batch_size)
+                    info = get_string('Epoch ', epoch, 'Step', batch_id + 1, 
+                                      '| G loss :', loss_G.item()/self.batch_size,
+                                      '| D loss (valid) : ', loss_valid.item()/self.batch_size,
+                                      '| D loss (fake) : ', loss_fake.item()/self.batch_size)
                     self.record(info + '\n')
-                    self.save_images(img_gen.detach())
+                    self.save_images(img_gen.detach()[:2], prefix= 'epoch_' + str(epoch) + '_step_' + str(batch_id + 1))
                     
 
     def generate(self):
@@ -99,12 +100,11 @@ class Manaeger():
         imgs_gen = self.model_G(vector)
         self.save_images(imgs_gen)
 
-    def save_images(self, imgs: 'image Tensor'): 
+    def save_images(self, imgs: 'image Tensor', prefix = ''): 
         num = imgs.size(0)
         for i in range(num):
             img = image_tensor_to_numpy(imgs[i])
-            i = str(i)
-            name = (5 - len(i)) * '0' + i + '.png'
+            name = prefix + '_' + str(i) + '.png'
             path = os.path.join(self.gen_dir, name)
             cv.imwrite(path, img)
 
