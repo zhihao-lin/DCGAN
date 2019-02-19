@@ -2,6 +2,12 @@ import numpy as np
 import torch
 import cv2 as cv
 
+def get_string(*args):
+    string = ''
+    for s in args:
+        string = string + ' ' + str(s)
+    return string
+
 def read_img_to_tensor(path):
     img = cv.imread(path)
     img = torch.tensor(img, dtype= torch.float)

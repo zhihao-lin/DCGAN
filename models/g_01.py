@@ -5,10 +5,13 @@ class Generator(nn.Module):
 
     def __init__(self):
         super(Generator, self).__init__()
-        
+        self.latent_dim = 512
 
     def name(self):
         return 'g_01'
+
+    def get_latent_dim(self):
+        return self.latent_dim
 
     def forward(self, x):
         return x

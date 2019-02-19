@@ -2,17 +2,18 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset, DataLoader
 from util import *
+import os
 
 class Dataset_mine(Dataset):
-    def __init__(self, root, train = True):
+    def __init__(self, root):
         super(Dataset_mine, self).__init__()
-        data_dir = None
-        if train == True:
-            data_dir = os.path.join(root,'train')
-        else:
-            data_dir = os.path.join(root, 'test')
         
-        self.img_list = [os.path.join(data_dir, img) for img in os.listdir(data_dir)]
+        
+        train_dir = os.path.join(root,'train')
+        test_dir = os.path.join(root, 'test')
+        train_list = [os.path.join(train_dir, img) for img in os.listdir(train_dir)]
+        test_list =  [os.path.join(test_dir, img) for img in os.listdir(test_dir)]
+        self.img_list = train_list + test_list
         self.img_list.sort()
         
     def __len__(self):
@@ -23,10 +24,10 @@ class Dataset_mine(Dataset):
         return img
 
 def unit_test():
-    data_train = Dataset_mine('../face_data', train=True)
-    data_valid = Dataset_mine('../face_data', train= False)
-    loader = DataLoader(data_train, batch_size= 8)
+    data = Dataset_mine('../face_data')
+    loader = DataLoader(data, batch_size= 8)
     
+    print('data set size:', len(data))
     for id, imgs in enumerate(loader):
         if id == 2:
             break
