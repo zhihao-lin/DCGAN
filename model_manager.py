@@ -33,7 +33,7 @@ class Manaeger():
         self.log_file = open('logs/' + self.id + '.txt', 'w')
         self.check_batch_num = args.check_batch_num
         self.gen_dir = os.path.join('generations', args.id)
-        if os.path.isdir(self.gen_dir):
+        if not os.path.isdir(self.gen_dir):
             os.mkdir(self.gen_dir)
     
     def load_data(self, data_loader):
@@ -44,12 +44,12 @@ class Manaeger():
         print(message, end='')
 
     def get_info(self):
-        info = get_string('Generator:', self.model_G.name(), '\n')
-        info = get_string('Discriminator:', self.model_D.name(), '\n')
+        info = get_string('ID:', self.id, '\n')
+        info = get_string(info, 'Generator:', self.model_G.name(), '\n')
+        info = get_string(info, 'Discriminator:', self.model_D.name(), '\n')
         info = get_string(info, 'Learning rate:', self.lr, '\n')
         info = get_string(info, 'Epoch number:', self.epoch_num, '\n')
         info = get_string(info, 'Batch size:', self.batch_size, '\n')
-        info = get_string(info, 'Weight name:', self.save_name, '\n')
         info = get_string(info, 'Log file:', self.log_file, '\n')
         info = get_string(info, '=======================\n\n')
         return info
