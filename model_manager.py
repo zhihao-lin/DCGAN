@@ -60,6 +60,7 @@ class Manaeger():
         for epoch in range(self.epoch_num):
             self.model_G.train()
             self.model_D.train()
+            img_gen = None
             
             for batch_id, imgs in enumerate(self.data_loader):
 
@@ -68,18 +69,18 @@ class Manaeger():
                 label_fake  = torch.zeros(self.batch_size, 1).to(self.device)
 
                 # Train Generator
+                self.optimizer_G.zero_grad()
                 img_gen = self.model_G(vector)
                 loss_G = self.bce_loss(self.model_D(img_gen), label_valid)
-                self.optimizer_G.zero_grad()
                 loss_G.backward()
                 self.optimizer_G.step()
 
                 # Train Disciminator
+                self.optimizer_D.zero_grad()
                 img_valid = imgs.to(self.device)
                 loss_valid = self.bce_loss(self.model_D(img_valid), label_valid)
                 loss_fake  = self.bce_loss(self.model_D(img_gen.detach()), label_fake)
                 loss_D = (loss_valid + loss_fake) / 2
-                self.optimizer_D.zero_grad()
                 loss_D.backward()
                 self.optimizer_D.step()
 
@@ -89,7 +90,8 @@ class Manaeger():
                                       '| D loss (valid) : ', loss_valid.item()/self.batch_size,
                                       '| D loss (fake) : ', loss_fake.item()/self.batch_size)
                     self.record(info + '\n')
-                    self.save_images(img_gen.detach()[:2], prefix= 'epoch_' + str(epoch) + '_step_' + str(batch_id + 1))
+
+            self.save_images(img_gen.detach()[:2], prefix= 'epoch_' + str(epoch) )
                     
 
     def generate(self):

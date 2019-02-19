@@ -9,6 +9,7 @@ class Generator(nn.Module):
         channels = [256, 256, 128, 64, 3]
 
         self.leaky_relu = nn.LeakyReLU(0.2)
+        self.relu  = nn.ReLU()
         self.fc1  = nn.Linear(self.latent_dim, 1024)
         self.deconv1 = nn.ConvTranspose2d(channels[0], channels[1], kernel_size= 4, stride= 4)
         self.deconv2 = nn.ConvTranspose2d(channels[1], channels[2], kernel_size= 2, stride= 2)
@@ -27,7 +28,7 @@ class Generator(nn.Module):
         x = self.leaky_relu(self.deconv1(x))
         x = self.leaky_relu(self.deconv2(x))
         x = self.leaky_relu(self.deconv3(x))
-        x = self.leaky_relu(self.deconv4(x))
+        x = self.relu(self.deconv4(x))
         return x
         
 def parameter_number(model):
