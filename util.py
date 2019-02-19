@@ -20,7 +20,14 @@ def image_tensor_to_numpy(tensor):
     return img
 
 def test():
-    pass
+    img = read_img_to_tensor('test.png')
+    print(img.size())
+    print(img)
+    img = image_tensor_to_numpy(img)
+    print(img.shape)
+    print(img)
+    cv.imshow('test',img)
+    cv.waitKey(0)
 
 if __name__ == '__main__':
     test()
