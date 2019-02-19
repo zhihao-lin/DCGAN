@@ -32,7 +32,7 @@ class Manaeger():
         self.save_name_D = os.path.join('../weights/', self.id + '_D.pkl') 
         self.log_file = open('logs/' + self.id + '.txt', 'w')
         self.check_batch_num = args.check_batch_num
-        self.gen_dir = os.path.join('generations', args.gen_dir)
+        self.gen_dir = os.path.join('generations', args.id)
         os.mkdir(self.gen_dir)
     
     def load_data(self, data_loader):

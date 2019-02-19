@@ -8,7 +8,6 @@ class Dataset_mine(Dataset):
     def __init__(self, root):
         super(Dataset_mine, self).__init__()
         
-        
         train_dir = os.path.join(root,'train')
         test_dir = os.path.join(root, 'test')
         train_list = [os.path.join(train_dir, img) for img in os.listdir(train_dir)]
