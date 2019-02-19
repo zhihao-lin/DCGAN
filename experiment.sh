@@ -1,1 +1,1 @@
-python3 main.py train g_01 d_01 -id Test 
+python3 main.py train g_01 d_01 -id 001

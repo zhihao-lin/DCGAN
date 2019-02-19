@@ -44,13 +44,12 @@ class Manaeger():
         print(message, end='')
 
     def get_info(self):
-        info = get_string('ID:', self.id, '\n')
+        info = get_string('\nID:', self.id, '\n')
         info = get_string(info, 'Generator:', self.model_G.name(), '\n')
         info = get_string(info, 'Discriminator:', self.model_D.name(), '\n')
         info = get_string(info, 'Learning rate:', self.lr, '\n')
         info = get_string(info, 'Epoch number:', self.epoch_num, '\n')
         info = get_string(info, 'Batch size:', self.batch_size, '\n')
-        info = get_string(info, 'Log file:', self.log_file, '\n')
         info = get_string(info, '=======================\n\n')
         return info
 
