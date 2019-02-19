@@ -22,7 +22,7 @@ args = parser.parse_args()
 
 # Prepare datasets, data loader
 data_set = Dataset_mine('../face_data')
-data_loader = DataLoader(data_set, batch_size= args.batch_size, shuffle= True)
+data_loader = DataLoader(data_set, batch_size= args.batch_size, shuffle= True, drop_last = True)
 
 def get_model(name_G, name_D):
     file_G,  file_D  = __import__(name_G), __import__(name_D)
