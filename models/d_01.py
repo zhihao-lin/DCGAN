@@ -16,8 +16,8 @@ class Discriminator(nn.Module):
         self.conv3 = nn.Conv2d(channels[2], channels[3], kernel_size= 3, padding= 1)
         self.pool3 = nn.MaxPool2d((2, 2), (2, 2))
         
-        self.fc1 = nn.Linear(channels[-1] * 2 * 2, 128)
-        self.fc2 = nn.Linear(128, 1)
+        self.fc1 = nn.Linear(channels[-1] * 2 * 2, 16)
+        self.fc2 = nn.Linear(16, 1)
 
     def name(self):
         return 'd_01'

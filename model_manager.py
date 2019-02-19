@@ -92,6 +92,8 @@ class Manaeger():
                     self.record(info + '\n')
 
             self.save_images(img_gen.detach()[:2], prefix= 'epoch_' + str(epoch) )
+            torch.save(self.model_G.state_dict(), self.save_name_G)
+            torch.save(self.model_D.state_dict(), self.save_name_D)
                     
 
     def generate(self):
