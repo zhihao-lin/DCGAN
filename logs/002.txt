@@ -139,3 +139,13 @@ ID: 002
  Epoch  21 Step 400 | G loss : 0.30777865648269653 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  0.0
  Epoch  21 Step 500 | G loss : 0.3086083233356476 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  0.0
  Epoch  21 Step 600 | G loss : 0.30944252014160156 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  0.0
+ Epoch  22 Step 100 | G loss : 0.3107699155807495 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  0.0
+ Epoch  22 Step 200 | G loss : 0.31170833110809326 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  0.0
+ Epoch  22 Step 300 | G loss : 0.31242263317108154 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  0.0
+ Epoch  22 Step 400 | G loss : 0.31330540776252747 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  0.0
+ Epoch  22 Step 500 | G loss : 0.3139934539794922 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  0.0
+ Epoch  22 Step 600 | G loss : 0.31482046842575073 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  0.0
+ Epoch  23 Step 100 | G loss : 0.31616121530532837 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  0.0
+ Epoch  23 Step 200 | G loss : 0.31698086857795715 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  0.0
+ Epoch  23 Step 300 | G loss : 0.31785356998443604 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  0.0
+ Epoch  23 Step 400 | G loss : 0.3187103569507599 | D loss (valid) :  0.43173471093177795 | D loss (fake) :  0.0
