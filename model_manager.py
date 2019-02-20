@@ -69,6 +69,7 @@ class Manaeger():
                 label_fake  = torch.zeros(self.batch_size, 1).to(self.device)
 
                 # Train Generator
+                self.model_G.zero_grad()
                 self.optimizer_G.zero_grad()
                 img_gen = self.model_G(vector)
                 loss_G = self.bce_loss(self.model_D(img_gen), label_valid)
@@ -76,6 +77,7 @@ class Manaeger():
                 self.optimizer_G.step()
 
                 # Train Disciminator
+                self.model_D.zero_grad()
                 self.optimizer_D.zero_grad()
                 img_valid = imgs.to(self.device)
                 loss_valid = self.bce_loss(self.model_D(img_valid), label_valid)
