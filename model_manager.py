@@ -67,24 +67,25 @@ class Manaeger():
                 vector = self.get_input_vector()
                 label_valid = torch.ones(self.batch_size, 1).to(self.device)
                 label_fake  = torch.zeros(self.batch_size, 1).to(self.device)
-
-                # Train Generator
-                self.model_G.zero_grad()
-                self.optimizer_G.zero_grad()
-                img_gen = self.model_G(vector)
-                loss_G = self.bce_loss(self.model_D(img_gen), label_valid)
-                loss_G.backward()
-                self.optimizer_G.step()
-
+            
                 # Train Disciminator
                 self.model_D.zero_grad()
                 self.optimizer_D.zero_grad()
                 img_valid = imgs.to(self.device)
+                img_gen = self.model_G(vector)
+
                 loss_valid = self.bce_loss(self.model_D(img_valid), label_valid)
                 loss_fake  = self.bce_loss(self.model_D(img_gen.detach()), label_fake)
-                loss_D = (loss_valid + loss_fake) / 2
+                loss_D = (loss_valid + loss_fake) 
                 loss_D.backward()
                 self.optimizer_D.step()
+                
+                # Train Generator
+                self.model_G.zero_grad()
+                self.optimizer_G.zero_grad()
+                loss_G = self.bce_loss(self.model_D(img_gen), label_valid)
+                loss_G.backward()
+                self.optimizer_G.step()
 
                 if (batch_id + 1) % self.check_batch_num == 0:
                     info = get_string('Epoch ', epoch, 'Step', batch_id + 1, 
