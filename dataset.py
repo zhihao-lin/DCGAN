@@ -3,6 +3,8 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset, DataLoader
 import torchvision.transforms as transforms
+import torchvision.utils as vutil
+from matplotlib import pyplot as plt
 from util import *
 
 
@@ -32,15 +34,20 @@ def unit_test():
                          transforms.ToTensor(),
                          transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))    
                         ]))
-    loader = DataLoader(data, batch_size= 8)
-    
-    print('data set size:', len(data))
-    for id, imgs in enumerate(loader):
-        if id == 2:
-            break
-        print(imgs.size()) 
-        print(imgs[0])
-        print(imgs[0].sum())
+    loader = DataLoader(data, batch_size= 64)
+    imgs = next(iter(loader))
+    plt.figure(figsize= (8, 8))
+    plt.imshow(np.transpose(vutil.make_grid(imgs[:64], padding=2,
+                normalize= True), (1, 2, 0)))
+    plt.show()
+
+    # print('data set size:', len(data))
+    # for id, imgs in enumerate(loader):
+    #     if id == 2:
+    #         break
+    #     print(imgs.size()) 
+    #     print(imgs[0])
+    #     print(imgs[0].sum())
 
 if __name__ == '__main__':
     unit_test()

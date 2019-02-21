@@ -61,6 +61,9 @@ class Manaeger():
     def train(self):
         info = self.get_info()
         self.record(info)
+        self.record(self.model_G.__str__() + '\n')
+        self.record(self.model_D.__str__() + '\n')
+
         fix_noise = torch.randn(self.batch_size, self.latent_dim, 1, 1).to(self.device)
         label_real = 1
         lable_fake = 0
