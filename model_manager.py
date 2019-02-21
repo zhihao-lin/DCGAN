@@ -117,7 +117,7 @@ class Manaeger():
             check_imgs = self.model_G(fix_noise)
             check_imgs = (check_imgs / 2) + 0.5
             check_imgs = check_imgs.cpu().detach()
-            save_images(check_imgs, (8, 8), 'Epoch_' + str(epoch) + '.png')
+            save_images(check_imgs, (8, 8), os.path.join(self.gen_dir, 'Epoch_' + str(epoch) + '.png'))
 
             torch.save(self.model_G.state_dict(), self.save_name_G)
             torch.save(self.model_D.state_dict(), self.save_name_D)
