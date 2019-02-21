@@ -84,7 +84,7 @@ class Manaeger():
                 # train with real images
                 labels.fill_(label_real)
                 output = self.model_D(real_imgs)
-                loss_real = self.bce_loss(output)
+                loss_real = self.bce_loss(output, labels)
                 loss_real.backward()
                 
                 # train with fake images
@@ -116,6 +116,7 @@ class Manaeger():
 
             check_imgs = self.model_G(fix_noise)
             check_imgs = (check_imgs / 2) + 0.5
+            check_imgs = check_imgs.cpu().detach()
             save_images(check_imgs, (8, 8), 'Epoch_' + str(epoch) + '.png')
 
             torch.save(self.model_G.state_dict(), self.save_name_G)

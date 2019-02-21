@@ -1,0 +1,61 @@
+        
+ID: tutorial 
+ infomation: folow the tutorial 
+ Generator: g_tutorial 
+ Discriminator: d_tutorial 
+ Learning rate: 0.002 
+ Epoch number: 500 
+ Batch size: 64 
+ =======================
+
+Generator(
+  (model): Sequential(
+    (0): ConvTranspose2d(100, 512, kernel_size=(4, 4), stride=(1, 1), bias=False)
+    (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace)
+    (3): ConvTranspose2d(512, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (5): ReLU(inplace)
+    (6): ConvTranspose2d(256, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (7): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (8): ReLU(inplace)
+    (9): ConvTranspose2d(128, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (10): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (11): ReLU(inplace)
+    (12): ConvTranspose2d(64, 3, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (13): Tanh()
+  )
+)
+Discriminator(
+  (model): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+    (3): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (5): LeakyReLU(negative_slope=0.2, inplace)
+    (6): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (7): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (8): LeakyReLU(negative_slope=0.2, inplace)
+    (9): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (10): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (11): LeakyReLU(negative_slope=0.2, inplace)
+    (12): Conv2d(512, 1, kernel_size=(4, 4), stride=(1, 1), bias=False)
+    (13): Sigmoid()
+  )
+)
+ Epoch  0 Step 100 | G loss : 0.0 | D loss (real) :  0.0 | D loss (fake) :  0.43173471093177795
+ Epoch  0 Step 200 | G loss : 0.0 | D loss (real) :  0.0 | D loss (fake) :  0.43173471093177795
+ Epoch  0 Step 300 | G loss : 0.0 | D loss (real) :  2.9103836007848827e-10 | D loss (fake) :  0.43173471093177795
+ Epoch  0 Step 400 | G loss : 0.0 | D loss (real) :  2.9103833926180656e-11 | D loss (fake) :  0.43173471093177795
+ Epoch  0 Step 500 | G loss : 0.0 | D loss (real) :  2.619346128884814e-10 | D loss (fake) :  0.43173471093177795
+ Epoch  0 Step 600 | G loss : 0.0 | D loss (real) :  0.0 | D loss (fake) :  0.43173471093177795
+ Epoch  1 Step 100 | G loss : 0.0 | D loss (real) :  0.0 | D loss (fake) :  0.43173471093177795
+ Epoch  1 Step 200 | G loss : 0.0 | D loss (real) :  1.4842999052078198e-09 | D loss (fake) :  0.43173471093177795
+ Epoch  1 Step 300 | G loss : 0.0 | D loss (real) :  2.328307546761721e-10 | D loss (fake) :  0.43173471093177795
+ Epoch  1 Step 400 | G loss : 0.0 | D loss (real) :  0.0 | D loss (fake) :  0.43173471093177795
+ Epoch  1 Step 500 | G loss : 0.0 | D loss (real) :  0.0 | D loss (fake) :  0.43173471093177795
+ Epoch  1 Step 600 | G loss : 0.0 | D loss (real) :  0.0 | D loss (fake) :  0.43173471093177795
+ Epoch  2 Step 100 | G loss : 0.0 | D loss (real) :  0.0 | D loss (fake) :  0.43173471093177795
+ Epoch  2 Step 200 | G loss : 0.0 | D loss (real) :  0.0 | D loss (fake) :  0.43173471093177795
+ Epoch  2 Step 300 | G loss : 0.0 | D loss (real) :  0.0 | D loss (fake) :  0.43173471093177795
