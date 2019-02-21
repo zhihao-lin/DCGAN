@@ -23,7 +23,7 @@ class Dataset_mine(Dataset):
         return len(self.img_list)
 
     def __getitem__(self, idx):
-        img = cv.imread(self.img_list[idx])
+        img = plt.imread(self.img_list[idx])
         if self.transform:
             img = self.transform(img)
         return img
@@ -36,18 +36,20 @@ def unit_test():
                         ]))
     loader = DataLoader(data, batch_size= 64)
     imgs = next(iter(loader))
+    
+    print('data set size:', len(data))
+    for id, imgs in enumerate(loader):
+        if id == 2:
+            break
+        print(imgs.size()) 
+        print(imgs[0])
+        
     plt.figure(figsize= (8, 8))
     plt.imshow(np.transpose(vutil.make_grid(imgs[:64], padding=2,
                 normalize= True), (1, 2, 0)))
     plt.show()
 
-    # print('data set size:', len(data))
-    # for id, imgs in enumerate(loader):
-    #     if id == 2:
-    #         break
-    #     print(imgs.size()) 
-    #     print(imgs[0])
-    #     print(imgs[0].sum())
+    
 
 if __name__ == '__main__':
     unit_test()

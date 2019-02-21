@@ -30,12 +30,7 @@ def save_images(imgs, shape, name= 'image.png'):
     img_save =  np.zeros((width * 64, height * 64, 3), dtype= np.float)
     imgs = imgs.permute(0, 2, 3, 1)
     imgs = imgs.numpy()
-    # The RGB channel is reversed after torchvision.transforms.ToTensor(),
-    # so it need to be reversed back
-    imgs_temp = imgs.copy()
-    imgs[:, :, :, 0] = imgs_temp[:, :, :, 2]
-    imgs[:, :, :, 2] = imgs_temp[:, :, :, 0]
-
+    
     for w in range(width):
         for h in range(height):
             img_save[64 * w : 64 * (w + 1), 64 * h : 64 * (h + 1)] = imgs[w * height + h]
@@ -56,7 +51,7 @@ def test():
         transforms.ToTensor(),
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
     ])
-    img = cv.imread('test.png')
+    img = plt.imread('test.png')
     img = transform(img)
 
     imgs = torch.empty(16, 3, 64, 64)
