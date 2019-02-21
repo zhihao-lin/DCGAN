@@ -1,12 +1,12 @@
+import os
+import sys
+import cv2 as cv
 import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
 from util import *
-import cv2 as cv
-import os
-import sys
 
 class Manaeger():
     def __init__(self, model_G, model_D, args):
@@ -15,6 +15,9 @@ class Manaeger():
             load_name = os.path.join('../weights/', args.load)
             model_G.load_state_dict(torch.load(load_name + '_G.pkl'))
             model_D.load_state_dict(torch.load(load_name + '_D.pkl'))
+        else:
+            model_G.apply(initialize_weights)
+            model_D.apply(initialize_weights)
         
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.model_G = model_G.to(self.device)
@@ -22,8 +25,8 @@ class Manaeger():
         self.model_D = model_D.to(self.device)
         self.id = args.id
         self.lr = args.lr
-        self.optimizer_G = optim.Adam(self.model_G.parameters(), lr= self.lr)
-        self.optimizer_D = optim.Adam(self.model_D.parameters(), lr= self.lr)
+        self.optimizer_G = optim.Adam(self.model_G.parameters(), lr= self.lr, betas= args.beta)
+        self.optimizer_D = optim.Adam(self.model_D.parameters(), lr= self.lr, betas= args.beta)
         self.epoch_num = args.epoch_num
         self.batch_size = args.batch_size
         self.bce_loss = nn.BCELoss()
@@ -35,6 +38,7 @@ class Manaeger():
         self.gen_dir = os.path.join('generations', args.id)
         if not os.path.isdir(self.gen_dir):
             os.mkdir(self.gen_dir)
+        self.info = args.info
     
     def load_data(self, data_loader):
         self.data_loader = data_loader
@@ -45,6 +49,7 @@ class Manaeger():
 
     def get_info(self):
         info = get_string('\nID:', self.id, '\n')
+        info = get_string(info, 'infomation:', self.info, '\n')
         info = get_string(info, 'Generator:', self.model_G.name(), '\n')
         info = get_string(info, 'Discriminator:', self.model_D.name(), '\n')
         info = get_string(info, 'Learning rate:', self.lr, '\n')
@@ -56,45 +61,60 @@ class Manaeger():
     def train(self):
         info = self.get_info()
         self.record(info)
+        fix_noise = torch.randn(self.batch_size, self.latent_dim, 1, 1).to(self.device)
+        label_real = 1
+        lable_fake = 0
+        labels = torch.empty(self.batch_size, 1).to(self.device)
 
         for epoch in range(self.epoch_num):
             self.model_G.train()
             self.model_D.train()
-            img_gen = None
+            
             
             for batch_id, imgs in enumerate(self.data_loader):
-
-                vector = self.get_input_vector()
-                label_valid = torch.ones(self.batch_size, 1).to(self.device)
-                label_fake  = torch.zeros(self.batch_size, 1).to(self.device)
-            
-                # Train Disciminator
+                ###################
+                # Update D net work
+                ###################
                 self.model_D.zero_grad()
-                self.optimizer_D.zero_grad()
-                img_valid = imgs.to(self.device)
-                img_gen = self.model_G(vector)
-
-                loss_valid = self.bce_loss(self.model_D(img_valid), label_valid)
-                loss_fake  = self.bce_loss(self.model_D(img_gen.detach()), label_fake)
-                loss_D = (loss_valid + loss_fake) 
-                loss_D.backward()
-                self.optimizer_D.step()
+                real_imgs = imgs.to(self.device)
                 
-                # Train Generator
+                # train with real images
+                labels.fill_(label_real)
+                output = self.model_D(real_imgs)
+                loss_real = self.bce_loss(output)
+                loss_real.backward()
+                
+                # train with fake images
+                labels.fill_(lable_fake)
+                noise = torch.randn(self.batch_size, self.latent_dim, 1, 1).to(self.device)
+                fake_imgs = self.model_G(noise)
+                output = self.model_D(fake_imgs.detach())
+                loss_fake = self.bce_loss(output, labels)
+                loss_fake.backward()
+                self.optimizer_D.step()
+
+                ###################
+                # Update G net work
+                ###################
                 self.model_G.zero_grad()
-                self.optimizer_G.zero_grad()
-                loss_G = self.bce_loss(self.model_D(img_gen), label_valid)
-                loss_G.backward()
+                labels.fill_(label_real)
+                output = self.model_D(fake_imgs)
+                loss_gen = self.bce_loss(output, labels)
+                loss_gen.backward()
                 self.optimizer_G.step()
 
+                # Record some information
                 if (batch_id + 1) % self.check_batch_num == 0:
                     info = get_string('Epoch ', epoch, 'Step', batch_id + 1, 
-                                      '| G loss :', loss_G.item()/self.batch_size,
-                                      '| D loss (valid) : ', loss_valid.item()/self.batch_size,
+                                      '| G loss :', loss_gen.item()/self.batch_size,
+                                      '| D loss (real) : ', loss_real.item()/self.batch_size,
                                       '| D loss (fake) : ', loss_fake.item()/self.batch_size)
                     self.record(info + '\n')
 
-            self.save_images(img_gen.detach()[:2], prefix= 'epoch_' + str(epoch) )
+            check_imgs = self.model_G(fix_noise)
+            check_imgs = (check_imgs / 2) + 0.5
+            save_images(check_imgs, (8, 8), 'Epoch_' + str(epoch) + '.png')
+
             torch.save(self.model_G.state_dict(), self.save_name_G)
             torch.save(self.model_D.state_dict(), self.save_name_D)
                     
@@ -102,19 +122,5 @@ class Manaeger():
     def generate(self):
         print('Generating ... ')
         self.model_G.eval()
-        vector = self.get_input_vector()
-        imgs_gen = self.model_G(vector)
-        self.save_images(imgs_gen)
-
-    def save_images(self, imgs: 'image Tensor', prefix = ''): 
-        num = imgs.size(0)
-        for i in range(num):
-            img = image_tensor_to_numpy(imgs[i])
-            name = prefix + '_' + str(i) + '.png'
-            path = os.path.join(self.gen_dir, name)
-            cv.imwrite(path, img)
-
-    def get_input_vector(self):
-        vector = torch.normal(mean= torch.zeros(self.batch_size, self.latent_dim), 
-                              std= torch.ones(self.batch_size, self.latent_dim)).to(self.device)
-        return vector
+        noise = torch.randn(self.batch_size, self.latent_dim, 1, 1).to(self.device)
+        imgs_gen = self.model_G(noise)
