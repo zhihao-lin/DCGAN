@@ -40,9 +40,9 @@ def save_images(imgs, shape, name= 'image.png'):
 def initialize_weights(m):
     class_name = m.__class__.__name__
     if class_name.find('Conv') != -1:
-        nn.init.normal_(m.weight.data, 0.0, 0.2)
+        nn.init.normal_(m.weight.data, 0.0, 0.02)
     elif class_name.find('BatchNorm') != -1:
-        nn.init.normal_(m.weight.data, 1.0, 0.2)
+        nn.init.normal_(m.weight.data, 1.0, 0.02)
         nn.init.constant_(m.bias.data, 0)
 
 def test():
