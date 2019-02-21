@@ -25,8 +25,8 @@ class Manaeger():
         self.model_D = model_D.to(self.device)
         self.id = args.id
         self.lr = args.lr
-        self.optimizer_G = optim.Adam(self.model_G.parameters(), lr= self.lr, betas= args.beta)
-        self.optimizer_D = optim.Adam(self.model_D.parameters(), lr= self.lr, betas= args.beta)
+        self.optimizer_G = optim.Adam(self.model_G.parameters(), lr= self.lr, betas= (args.beta, 0.999))
+        self.optimizer_D = optim.Adam(self.model_D.parameters(), lr= self.lr, betas= (args.beta, 0.999))
         self.epoch_num = args.epoch_num
         self.batch_size = args.batch_size
         self.bce_loss = nn.BCELoss()
