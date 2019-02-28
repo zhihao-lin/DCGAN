@@ -8,4 +8,5 @@
 # python3 main.py train g_tutorial d_tutorial -id exp4 -info "use default beta value for Adam" -beta 0.9
 # python3 main.py train g_tutorial d_tutorial -id "exp5" -info "set bata_1 to 0"
 # python3 main.py train g_tutorial d_03 -id exp6 -info "Use RelU instaed of Leaky ReLU in D model"
-python3 main.py train g_03 d_04 -id "exp7" -info "Without BN"
+# python3 main.py train g_03 d_04 -id "exp7" -info "Without BN"
+python3 main.py train g_tutorial d_tutorial -id "exp8" -info "Change the training order for D model (fake first)"
