@@ -16,8 +16,9 @@ class Manaeger():
             model_G.load_state_dict(torch.load(load_name + '_G.pkl'))
             model_D.load_state_dict(torch.load(load_name + '_D.pkl'))
         else:
-            model_G.apply(initialize_weights)
-            model_D.apply(initialize_weights)
+            pass
+            # model_G.apply(initialize_weights)
+            # model_D.apply(initialize_weights)
         
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.model_G = model_G.to(self.device)

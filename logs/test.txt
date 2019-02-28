@@ -1,6 +1,6 @@
         
-ID: exp4 
- infomation: use default beta value for Adam 
+ID: test 
+ infomation: test beta value for Adam 
  Generator: g_tutorial 
  Discriminator: d_tutorial 
  Learning rate: 0.002 
@@ -44,10 +44,12 @@ Discriminator(
     (13): Sigmoid()
   )
 )
- Epoch  0 Step 100 | G loss : 0.1475220024585724 | D loss (real) :  0.0004195782821625471 | D loss (fake) :  8.491503831464797e-05
- Epoch  0 Step 200 | G loss : 0.16652721166610718 | D loss (real) :  0.0002881522523239255 | D loss (fake) :  9.098010195884854e-05
- Epoch  0 Step 300 | G loss : 0.15319079160690308 | D loss (real) :  0.0007841256447136402 | D loss (fake) :  0.00010487155668670312
- Epoch  0 Step 400 | G loss : 0.27870357036590576 | D loss (real) :  7.154970376177516e-07 | D loss (fake) :  0.0001302625023527071
- Epoch  0 Step 500 | G loss : 0.17802049219608307 | D loss (real) :  4.641907707991777e-06 | D loss (fake) :  4.888059265795164e-06
- Epoch  0 Step 600 | G loss : 0.43173277378082275 | D loss (real) :  4.921698746329639e-07 | D loss (fake) :  0.0
- Epoch  1 Step 100 | G loss : 0.43173280358314514 | D loss (real) :  1.1554293521953696e-08 | D loss (fake) :  0.0
+ Epoch  0 Step 100 | G loss : 0.08477288484573364 | D loss (real) :  0.00022801748127676547 | D loss (fake) :  0.12175783514976501
+ Epoch  0 Step 200 | G loss : 0.02567964419722557 | D loss (real) :  0.007708307355642319 | D loss (fake) :  0.006607384420931339
+ Epoch  0 Step 300 | G loss : 0.05128668621182442 | D loss (real) :  0.0072385892271995544 | D loss (fake) :  0.007402142509818077
+ Epoch  0 Step 400 | G loss : 0.0651843324303627 | D loss (real) :  0.0035197206307202578 | D loss (fake) :  0.006645509973168373
+ Epoch  0 Step 500 | G loss : 0.05082418769598007 | D loss (real) :  0.007585075683891773 | D loss (fake) :  0.006673051975667477
+ Epoch  0 Step 600 | G loss : 0.08860915899276733 | D loss (real) :  0.0025339641142636538 | D loss (fake) :  0.014500519260764122
+ Epoch  1 Step 100 | G loss : 0.053131893277168274 | D loss (real) :  0.012377011589705944 | D loss (fake) :  0.0005866451538167894
+ Epoch  1 Step 200 | G loss : 0.08940726518630981 | D loss (real) :  0.0027007549069821835 | D loss (fake) :  0.010996636003255844
+ Epoch  1 Step 300 | G loss : 0.0995221734046936 | D loss (real) :  0.0019532847218215466 | D loss (fake) :  0.012501979246735573
