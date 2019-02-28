@@ -11,4 +11,4 @@
 # python3 main.py train g_03 d_04 -id "exp7" -info "Without BN"
 # python3 main.py train g_tutorial d_tutorial -id "exp8" -info "Change the training order for D model (fake first)"
 # python3 main.py train g_04  d_tutorial -id "exp9" -info "G Model use bigger stride size that kernels dont overlap"
-python3 main.py train g_tutorial  d_05 -id "exp10" -info "D model use max-pool for down-sampling"
+# python3 main.py train g_tutorial  d_05 -id "exp10" -info "D model use max-pool for down-sampling"
