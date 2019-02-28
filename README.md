@@ -13,7 +13,7 @@ Deep Convolutional Generative Adversarial Network, implemented with PyTorch
 ## Introduction
  
  DCGAN, a generative adversarial network designed especially for images, is implemented in this repo, 
- folowed the instructions and tips listed in the references, and several settings are experiments are conducted, 
+ instructions and tips listed in the references are followed, and several settings are experimented, 
  some observations can be found below. Here is guidance of this repo:
 
  * Main components are **main.py** & **model_manager**, almost all settings are defined in these two files.
