@@ -1,0 +1,92 @@
+        
+ID: exp1 
+ infomation: without initialization 
+ Generator: g_tutorial 
+ Discriminator: d_tutorial 
+ Learning rate: 0.002 
+ Epoch number: 500 
+ Batch size: 64 
+ =======================
+
+Generator(
+  (model): Sequential(
+    (0): ConvTranspose2d(100, 512, kernel_size=(4, 4), stride=(1, 1), bias=False)
+    (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace)
+    (3): ConvTranspose2d(512, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (5): ReLU(inplace)
+    (6): ConvTranspose2d(256, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (7): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (8): ReLU(inplace)
+    (9): ConvTranspose2d(128, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (10): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (11): ReLU(inplace)
+    (12): ConvTranspose2d(64, 3, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (13): Tanh()
+  )
+)
+Discriminator(
+  (model): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.2, inplace)
+    (3): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (5): LeakyReLU(negative_slope=0.2, inplace)
+    (6): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (7): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (8): LeakyReLU(negative_slope=0.2, inplace)
+    (9): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (10): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (11): LeakyReLU(negative_slope=0.2, inplace)
+    (12): Conv2d(512, 1, kernel_size=(4, 4), stride=(1, 1), bias=False)
+    (13): Sigmoid()
+  )
+)
+ Epoch  0 Step 100 | G loss : 0.03373798727989197 | D loss (real) :  0.01982209086418152 | D loss (fake) :  0.0017798168119043112
+ Epoch  0 Step 200 | G loss : 0.059243060648441315 | D loss (real) :  0.002452109009027481 | D loss (fake) :  0.023725003004074097
+ Epoch  0 Step 300 | G loss : 0.022113867104053497 | D loss (real) :  0.008275456726551056 | D loss (fake) :  0.00875377282500267
+ Epoch  0 Step 400 | G loss : 0.030052483081817627 | D loss (real) :  0.010765783488750458 | D loss (fake) :  0.010123111307621002
+ Epoch  0 Step 500 | G loss : 0.022279568016529083 | D loss (real) :  0.010749688372015953 | D loss (fake) :  0.007763832341879606
+ Epoch  0 Step 600 | G loss : 0.05281560495495796 | D loss (real) :  0.0050100600346922874 | D loss (fake) :  0.009337347000837326
+ Epoch  1 Step 100 | G loss : 0.04079790785908699 | D loss (real) :  0.009763551875948906 | D loss (fake) :  0.007246175780892372
+ Epoch  1 Step 200 | G loss : 0.06885504722595215 | D loss (real) :  0.004670328460633755 | D loss (fake) :  0.012401342391967773
+ Epoch  1 Step 300 | G loss : 0.04423169046640396 | D loss (real) :  0.0047962358221411705 | D loss (fake) :  0.012103438377380371
+ Epoch  1 Step 400 | G loss : 0.035081904381513596 | D loss (real) :  0.0074051422998309135 | D loss (fake) :  0.006544522941112518
+ Epoch  1 Step 500 | G loss : 0.0439743772149086 | D loss (real) :  0.00861637108027935 | D loss (fake) :  0.005465427879244089
+ Epoch  1 Step 600 | G loss : 0.061950311064720154 | D loss (real) :  0.0027066562324762344 | D loss (fake) :  0.012212879955768585
+ Epoch  2 Step 100 | G loss : 0.07060866057872772 | D loss (real) :  0.0019034423166885972 | D loss (fake) :  0.014973025768995285
+ Epoch  2 Step 200 | G loss : 0.03954606503248215 | D loss (real) :  0.009049160405993462 | D loss (fake) :  0.006796756759285927
+ Epoch  2 Step 300 | G loss : 0.0520632304251194 | D loss (real) :  0.00351283373311162 | D loss (fake) :  0.01562405563890934
+ Epoch  2 Step 400 | G loss : 0.03761468827724457 | D loss (real) :  0.015139877796173096 | D loss (fake) :  0.0050299521535634995
+ Epoch  2 Step 500 | G loss : 0.059365905821323395 | D loss (real) :  0.004216937348246574 | D loss (fake) :  0.009275431744754314
+ Epoch  2 Step 600 | G loss : 0.04267783463001251 | D loss (real) :  0.0070150140672922134 | D loss (fake) :  0.0049803778529167175
+ Epoch  3 Step 100 | G loss : 0.04970683157444 | D loss (real) :  0.005432368256151676 | D loss (fake) :  0.00607595918700099
+ Epoch  3 Step 200 | G loss : 0.08353433758020401 | D loss (real) :  0.0032030558213591576 | D loss (fake) :  0.015915200114250183
+ Epoch  3 Step 300 | G loss : 0.05996425822377205 | D loss (real) :  0.003591741668060422 | D loss (fake) :  0.0070918588899075985
+ Epoch  3 Step 400 | G loss : 0.02958024851977825 | D loss (real) :  0.016991401091217995 | D loss (fake) :  0.0014951840275898576
+ Epoch  3 Step 500 | G loss : 0.037298452109098434 | D loss (real) :  0.003788953647017479 | D loss (fake) :  0.00575585663318634
+ Epoch  3 Step 600 | G loss : 0.06610208749771118 | D loss (real) :  0.0031020191963762045 | D loss (fake) :  0.014802947640419006
+ Epoch  4 Step 100 | G loss : 0.03267683833837509 | D loss (real) :  0.011715562082827091 | D loss (fake) :  0.001763524254783988
+ Epoch  4 Step 200 | G loss : 0.03135964646935463 | D loss (real) :  0.006764661520719528 | D loss (fake) :  0.0041548507288098335
+ Epoch  4 Step 300 | G loss : 0.0424547903239727 | D loss (real) :  0.004926048219203949 | D loss (fake) :  0.008015058934688568
+ Epoch  4 Step 400 | G loss : 0.033022694289684296 | D loss (real) :  0.007545705884695053 | D loss (fake) :  0.005436042323708534
+ Epoch  4 Step 500 | G loss : 0.05400034785270691 | D loss (real) :  0.006110635586082935 | D loss (fake) :  0.010120873339474201
+ Epoch  4 Step 600 | G loss : 0.04431536793708801 | D loss (real) :  0.00532953068614006 | D loss (fake) :  0.009901221841573715
+ Epoch  5 Step 100 | G loss : 0.055197421461343765 | D loss (real) :  0.0026318193413317204 | D loss (fake) :  0.0111145731061697
+ Epoch  5 Step 200 | G loss : 0.03426016867160797 | D loss (real) :  0.010253021493554115 | D loss (fake) :  0.0020806179381906986
+ Epoch  5 Step 300 | G loss : 0.05260132625699043 | D loss (real) :  0.004807064775377512 | D loss (fake) :  0.006366230547428131
+ Epoch  5 Step 400 | G loss : 0.043150268495082855 | D loss (real) :  0.005235802847892046 | D loss (fake) :  0.0073713213205337524
+ Epoch  5 Step 500 | G loss : 0.05245194956660271 | D loss (real) :  0.005300610791891813 | D loss (fake) :  0.009930753149092197
+ Epoch  5 Step 600 | G loss : 0.0547901876270771 | D loss (real) :  0.00431578466668725 | D loss (fake) :  0.008450476452708244
+ Epoch  6 Step 100 | G loss : 0.06539271771907806 | D loss (real) :  0.0026593352667987347 | D loss (fake) :  0.009972292929887772
+ Epoch  6 Step 200 | G loss : 0.05895359441637993 | D loss (real) :  0.005069597624242306 | D loss (fake) :  0.00658020656555891
+ Epoch  6 Step 300 | G loss : 0.02866148203611374 | D loss (real) :  0.01528122741729021 | D loss (fake) :  0.00173862068913877
+ Epoch  6 Step 400 | G loss : 0.044104382395744324 | D loss (real) :  0.009227109141647816 | D loss (fake) :  0.0054366709664464
+ Epoch  6 Step 500 | G loss : 0.06127837672829628 | D loss (real) :  0.003986884839832783 | D loss (fake) :  0.005712376907467842
+ Epoch  6 Step 600 | G loss : 0.08400383591651917 | D loss (real) :  0.001329205697402358 | D loss (fake) :  0.023463554680347443
+ Epoch  7 Step 100 | G loss : 0.07865491509437561 | D loss (real) :  0.0008128953631967306 | D loss (fake) :  0.01326226256787777
+ Epoch  7 Step 200 | G loss : 0.03806046023964882 | D loss (real) :  0.007567083463072777 | D loss (fake) :  0.0039520892314612865
+ Epoch  7 Step 300 | G loss : 0.04170134663581848 | D loss (real) :  0.008274567313492298 | D loss (fake) :  0.003470540279522538
+ Epoch  7 Step 400 | G loss : 0.023694772273302078 | D loss (real) :  0.014504238963127136 | D loss (fake) :  0.0013602065155282617
