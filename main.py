@@ -16,7 +16,7 @@ parser.add_argument('-id', help= 'Experiment ID, used for saving files', default
 parser.add_argument('-lr', help= 'Learning rate',type=float, default= 0.002)
 parser.add_argument('-beta', help= 'Beta1 hyperparameter for Adam optimizers',type= float, default= 0.5)
 parser.add_argument('-batch_size', type= int, default= 64)
-parser.add_argument('-epoch_num', type = int, default= 500)
+parser.add_argument('-epoch_num', type = int, default= 10)
 parser.add_argument('-load', help='Weights to be load', default= None)
 parser.add_argument('-check_batch_num', help= 'How many batches to show result once', type= int, default=100)
 parser.add_argument('-info', help= 'information for records', default= None)
