@@ -65,8 +65,8 @@ after 17 epoch:
 * The learning rate might be important
 * In Discriminator structure, there's only small difference between using **Leaky ReLU** or **ReLU**
 * **Batch Normalization** is super important for stability.
-* The order of training real/fake images for D doesn't matter.
-* In Generator, using bigger kernel size and smaller stride size(overlap each other) leads to better image quality.
+* The order of training real/fake images for Discriminator doesn't matter.
+* In Generator, using bigger kernel size and smaller stride size(overlap with each other) leads to better image quality.
 * In Discriminator, using strided-kernel instead of max-pooling for down-sampling leads to better performance.
 
 ## References
