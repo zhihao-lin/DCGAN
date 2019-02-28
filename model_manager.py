@@ -81,6 +81,12 @@ class Manaeger():
                 self.model_D.zero_grad()
                 real_imgs = imgs.to(self.device)
 
+                # train with real images
+                labels.fill_(label_real)
+                output = self.model_D(real_imgs)
+                loss_real = self.bce_loss(output, labels)
+                loss_real.backward()
+
                 # train with fake images
                 labels.fill_(lable_fake)
                 noise = torch.randn(self.batch_size, self.latent_dim, 1, 1).to(self.device)
@@ -88,12 +94,6 @@ class Manaeger():
                 output = self.model_D(fake_imgs.detach())
                 loss_fake = self.bce_loss(output, labels)
                 loss_fake.backward()
-
-                # train with real images
-                labels.fill_(label_real)
-                output = self.model_D(real_imgs)
-                loss_real = self.bce_loss(output, labels)
-                loss_real.backward()
                 
                 self.optimizer_D.step()
 
