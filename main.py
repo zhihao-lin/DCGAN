@@ -39,7 +39,7 @@ def get_model(name_G, name_D):
 def main():
     print('main function is running ...')
     model_G, model_D = get_model(args.model_G, args.model_D)
-    manager = Manaeger(model_G, model_D, args)
+    manager = Manager(model_G, model_D, args)
     manager.load_data(data_loader)
     if args.mode == 'train':
         manager.train()
