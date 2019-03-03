@@ -3,7 +3,7 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset, DataLoader
 import torchvision.transforms as transforms
-from model_manager import Manaeger
+from model_manager import Manager
 import sys
 sys.path.append('models')
 from dataset import Dataset_mine
