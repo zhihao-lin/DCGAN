@@ -7,7 +7,7 @@ import torch.optim as optim
 from torch.utils.data import DataLoader
 from util import *
 
-class Manaeger():
+class Manager():
     def __init__(self, model_G, model_D, args):
         
         if  args.load:
